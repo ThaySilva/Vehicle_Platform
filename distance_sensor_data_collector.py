@@ -1,8 +1,14 @@
-import time
+#!/usr/bin/env python
+__author__ = "Thaynara Silva"
+__copyright__ = "Copyright 2018, Software Development Final Year Project"
+__version__ = "1.0"
+__date__ = "19/04/2018"
+
 import RPi.GPIO as GPIO
+import time
 
 class ObstacleDetector():
-
+    
     def __init__(self):
         GPIO.setwarnings(False)
         GPIO.setmode(GPIO.BOARD)
@@ -13,8 +19,8 @@ class ObstacleDetector():
 
     def detect_obstacle_front(self):
         GPIO.setup(self.FRONT_TRIGGER, GPIO.OUT)
-        GPIO.setup(self.BACK_ECHO, GPIO.IN)
-        GPIO.output(self.BACK_TRIGGER, False)
+        GPIO.setup(self.FRONT_ECHO, GPIO.IN)
+        GPIO.output(self.FRONT_TRIGGER, False)
 
         GPIO.output(self.FRONT_TRIGGER, True)
         time.sleep(0.00001)
@@ -31,14 +37,13 @@ class ObstacleDetector():
         obstacle_distance = (time_elapsed * 34300) / 2
 
         return obstacle_distance
-
+    
     def detect_obstacle_back(self):
         GPIO.setup(self.BACK_TRIGGER, GPIO.OUT)
         GPIO.setup(self.BACK_ECHO, GPIO.IN)
         GPIO.output(self.BACK_TRIGGER, False)
 
         GPIO.output(self.BACK_TRIGGER, True)
-        time.sleep(self.BACK_TRIGGER, True)
         time.sleep(0.00001)
         GPIO.output(self.BACK_TRIGGER, False)
         start_echo = time.time()

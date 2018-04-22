@@ -1,0 +1,2 @@
+model_checkpoint_path: "/Users/thaynarasilva/Desktop/training_tf_model/cnn_model.model"
+all_model_checkpoint_paths: "/Users/thaynarasilva/Desktop/training_tf_model/cnn_model.model"
